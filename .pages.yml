@@ -1,0 +1,104 @@
+
+media:
+  input: media
+  output: /media
+
+content:
+  - name: projects
+    label: Property Projects
+    type: collection
+    path: content/projects
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      fields:
+        - title
+        - location
+        - bhk
+        - startingPrice
+      sort: title
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Project Name
+        type: string
+        required: true
+
+      - name: slug
+        label: Project URL Slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+
+      - name: developer
+        label: Developer
+        type: string
+
+      - name: location
+        label: Location
+        type: string
+        required: true
+
+      - name: propertyType
+        label: Property Type
+        type: select
+        options:
+          values:
+            - Apartment
+            - Villa
+            - Plot
+            - Commercial
+
+      - name: bhk
+        label: BHK Configuration
+        type: string
+
+      - name: minCarpetArea
+        label: Minimum Carpet Area (sq ft)
+        type: number
+
+      - name: maxCarpetArea
+        label: Maximum Carpet Area (sq ft)
+        type: number
+
+      - name: startingPrice
+        label: Starting Price (INR)
+        type: number
+
+      - name: possession
+        label: Possession
+        type: string
+
+      - name: status
+        label: Project Status
+        type: select
+        options:
+          values:
+            - New Launch
+            - Under Construction
+            - Ready to Move
+
+      - name: featured
+        label: Featured Project
+        type: boolean
+
+      - name: coverImage
+        label: Cover Image
+        type: image
+
+      - name: gallery
+        label: Project Gallery
+        type: image
+        list: true
+
+      - name: amenities
+        label: Amenities
+        type: string
+        list: true
+
+      - name: description
+        label: Project Description
+        type: rich-text
