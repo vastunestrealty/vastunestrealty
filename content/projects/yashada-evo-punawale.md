@@ -24,7 +24,7 @@ amenities:
   - "✔️ 70+ Hong Kong Inspired Lifestyle Amenities "
   - "✔️ 11 Clubhouses in Entire Township "
   - ✔️ Low Density, High Lifestyle Living
-description: >+
+description: >-
   🔥YASHADA EVO, PUNAWALE🔥
 
 
