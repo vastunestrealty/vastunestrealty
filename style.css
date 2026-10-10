@@ -10,19 +10,19 @@
   flex-shrink: 0;
 }
 
+```css
 .brand-logo {
   display: block;
-  width: 190px;
+  width: 125px;
   max-width: 100%;
-  height: 58px;
+  height: 40px;
   object-fit: contain;
   object-position: left center;
 }
 
 @media (max-width: 600px) {
   .brand-logo {
-    width: 155px;
-    height: 48px;
+    width: 105px;
+    height: 34px;
   }
 }
-```
