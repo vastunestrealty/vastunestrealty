@@ -10,7 +10,7 @@ maxCarpetArea: 875
 startingPrice: 10000000
 possession: Dec'30
 status: Under Construction
-featured: false
+featured: true
 coverImage: /media/EVO Presenter_Digital_Vertical_A3_5.jpg
 gallery:
   - /media/EVO Presenter_Digital_Vertical_A3_12.jpg
