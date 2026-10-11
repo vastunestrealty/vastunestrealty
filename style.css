@@ -26,3 +26,161 @@
     height: 34px;
   }
 }
+
+/* Premium Contact Section */
+.contact-section {
+  padding: 76px 0;
+  text-align: center;
+  color: #f7f5ef;
+  background: #142c28;
+}
+
+.contact-eyebrow {
+  color: #d9bc86;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.contact-section h2 {
+  margin: 12px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #fff;
+}
+
+.contact-intro {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #d7dfda;
+  line-height: 1.8;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0 42px;
+}
+
+.contact-button,
+.contact-secondary {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-button {
+  color: #142c28;
+  background: #d9bc86;
+}
+
+.contact-secondary {
+  color: #fff;
+  border: 1px solid #d9bc86;
+}
+
+.contact-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.contact-item {
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+.contact-item h3 {
+  color: #d9bc86;
+  font-size: 16px;
+}
+
+.contact-item a,
+.contact-item p {
+  color: #f7f5ef;
+  line-height: 1.8;
+  text-decoration: none;
+}
+
+/* Website Footer */
+.site-footer {
+  padding-top: 44px;
+  color: #e9ede9;
+  background: #0d211e;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 36px;
+  padding-bottom: 32px;
+}
+
+.footer-grid h3 {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.footer-grid h3 span {
+  color: #d9bc86;
+}
+
+.footer-grid h4 {
+  color: #d9bc86;
+}
+
+.footer-grid p {
+  color: #c7d0ca;
+  line-height: 1.8;
+}
+
+.footer-grid a {
+  display: block;
+  width: fit-content;
+  margin: 12px 0;
+  color: #e9ede9;
+  text-decoration: none;
+}
+
+.footer-grid a:hover,
+.contact-item a:hover {
+  color: #d9bc86;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.footer-bottom p,
+.footer-bottom a {
+  color: #c7d0ca;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .contact-details,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section {
+    padding: 52px 0;
+  }
+
+  .footer-grid {
+    gap: 18px;
+  }
+}
