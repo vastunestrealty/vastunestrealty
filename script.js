@@ -17,4 +17,45 @@ function populateLocations(){const select=$("#locationFilter");const current=sel
 function matchesBhk(p,bhk){if(!bhk)return true;return String(p.bhk||p.configuration||"").toLowerCase().includes(bhk.toLowerCase());}
 function renderProjects(){const loc=$("#locationFilter").value,bhk=$("#bhkFilter").value,budget=$("#budgetFilter").value;let [min,max]=budget?budget.split("-").map(Number):[0,Infinity];const filtered=projects.filter(p=>(!loc||(p.location||p.area)===loc)&&matchesBhk(p,bhk)&&(!budget||(Number(p.starting_price||p.price||0)>=min&&Number(p.starting_price||p.price||0)<max)));$("#resultsCount").textContent=`${filtered.length} ${filtered.length===1?"property":"properties"} to explore`;$("#emptyState").hidden=filtered.length>0;$("#projectGrid").innerHTML=filtered.map((p,i)=>{const image=p.image||p.cover_image||p.featured_image||"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";const title=p.title||p.name||"Featured Property";const location=p.location||p.area||"Pune";const config=p.bhk||p.configuration||p.property_type||"Residential";const price=p.starting_price||p.price||"";return `<article class="project-card"><div class="project-image"><img src="${safe(image)}" alt="${safe(title)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80'"><span class="project-tag">${safe(p.property_type||"Featured Residence")}</span></div><div class="project-content"><div class="project-location">${safe(location)}</div><h3>${safe(title)}</h3><div class="project-meta"><span>${safe(config)}</span>${p.developer?`<span>${safe(p.developer)}</span>`:""}</div><div class="project-bottom"><div><span class="price-label">Starting from</span><span class="project-price">${safe(money(price))}</span></div><a href="#" class="card-link" data-project="${safe(p.slug||title)}">View details ↗</a></div></div></article>`}).join("");document.querySelectorAll("[data-project]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();const p=projects.find(x=>(x.slug||x.title||x.name)===a.dataset.project);if(p)openDetails(p)});}
 function openDetails(p){const modal=document.createElement("div");modal.className="detail-modal open";modal.innerHTML=`<div class="modal-card" role="dialog" aria-modal="true" aria-label="${safe(p.title||p.name)} details"><button class="modal-close" aria-label="Close">×</button><p class="eyebrow">VASTUNEST PROPERTY DETAILS</p><h2>${safe(p.title||p.name)}</h2><p>${safe(p.description||"Contact our property advisor for detailed project information.")}</p><div class="modal-details"><div><small>Location</small><strong>${safe(p.location||p.area||"Pune")}</strong></div><div><small>Configuration</small><strong>${safe(p.bhk||p.configuration||"On request")}</strong></div><div><small>Starting price</small><strong>${safe(money(p.starting_price||p.price))}</strong></div><div><small>Developer</small><strong>${safe(p.developer||"Details on request")}</strong></div></div><div class="modal-actions"><a href="https://wa.me/?text=${encodeURIComponent("Hello Vastunest Realty, please share details for "+(p.title||p.name)+".")}" target="_blank" rel="noopener">Enquire on WhatsApp ↗</a><a href="mailto:hello@vastunestrealty.com?subject=${encodeURIComponent("Property enquiry: "+(p.title||p.name))}">Email an advisor ↗</a></div></div>`;document.body.appendChild(modal);const close=()=>modal.remove();modal.querySelector(".modal-close").addEventListener("click",close);modal.addEventListener("click",e=>{if(e.target===modal)close()});document.addEventListener("keydown",function esc(e){if(e.key==="Escape"){close();document.removeEventListener("keydown",esc)}});}
-$("#searchButton").addEventListener("click",renderProjects);["locationFilter","bhkFilter","budgetFilter"].forEach(id=>$("#"+id).addEventListener("change",renderProjects));$("#menuToggle").addEventListener("click",()=>$("#navLinks").classList.toggle("open"));document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>$("#navLinks").classList.remove("open")));$("#year").textContent=new Date().getFullYear();loadProjects();
+
+function startWebsiteProjects() {
+  const searchButton = document.querySelector("#searchButton");
+  const locationFilter = document.querySelector("#locationFilter");
+  const bhkFilter = document.querySelector("#bhkFilter");
+  const budgetFilter = document.querySelector("#budgetFilter");
+  const menuToggle = document.querySelector("#menuToggle");
+  const navLinks = document.querySelector("#navLinks");
+  const year = document.querySelector("#year");
+
+  if (searchButton) {
+    searchButton.addEventListener("click", renderProjects);
+  }
+
+  [locationFilter, bhkFilter, budgetFilter].forEach(el => {
+    if (el) el.addEventListener("change", renderProjects);
+  });
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+  }
+
+  if (navLinks) {
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+  }
+
+  if (year) year.textContent = new Date().getFullYear();
+
+  loadProjects();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startWebsiteProjects);
+} else {
+  startWebsiteProjects();
+}
