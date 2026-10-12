@@ -2,3 +2,48 @@
 @media(max-width:980px){.search-panel{grid-template-columns:repeat(2,minmax(0,1fr))}.search-heading{grid-column:1/-1}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.manifesto-grid{gap:40px}.footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{gap:17px}}
 @media(max-width:700px){.container{width:min(100% - 32px,1180px)}.topinner{font-size:10px;min-height:35px}.topinner span{max-width:55%}.nav{height:70px}.brandmark{width:38px;height:38px}.brandtext{font-size:12px}.menu-toggle{display:block}nav{display:none;position:absolute;left:0;right:0;top:70px;background:var(--paper);padding:16px 22px 23px;border-bottom:1px solid var(--line);box-shadow:0 15px 25px #10251f0c;align-items:stretch;flex-direction:column;gap:0}nav.open{display:flex}nav>a{padding:13px 0}nav .nav-cta{padding:13px 15px;margin-top:8px}.hero{min-height:560px}.hero-bg{background-position:60% center}.hero-content{padding-top:45px;padding-bottom:65px}.hero h1{font-size:56px}.hero-copy{font-size:14px;max-width:400px}.hero-caption{left:16px;right:16px;bottom:16px;font-size:8px}.search-panel{padding:19px;gap:15px}.search-heading{padding-bottom:4px}.search-panel .button{grid-column:1/-1;width:100%}.section{padding:72px 0}.section-head{display:block;margin-bottom:30px}.section-head h2{font-size:44px}.section-intro{margin-top:18px;font-size:13px}.results-line{align-items:flex-start;gap:10px}.sort-note{text-align:right}.project-grid{grid-template-columns:1fr;gap:18px}.project-image{height:235px}.project-content{padding:19px}.manifesto{padding:70px 0}.manifesto-grid{grid-template-columns:1fr;gap:35px}.manifesto-image{min-height:340px}.manifesto h2,.contact h2{font-size:40px}.process-grid{grid-template-columns:1fr;gap:12px}.process-grid article{min-height:0;padding:23px}.contact{padding:55px 0}.contact-inner{display:block}.contact-actions{margin-top:26px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px 20px}.footer-grid>div:first-child{grid-column:1/-1}.footer-bottom{font-size:9px}.modal-card{padding:30px 21px}.modal-card h2{font-size:27px}}
 @media(max-width:390px){.search-panel{grid-template-columns:1fr}.search-heading,.search-panel .button{grid-column:auto}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}.hero h1{font-size:49px}}
+/* Vastunest Realty brochure lead form */
+.brochure-lead-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.brochure-lead-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.brochure-lead-form input,
+.brochure-lead-form select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+}
+
+.brochure-lead-form .lead-submit {
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.brochure-lead-form .lead-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.brochure-lead-form .lead-status {
+  font-size: 13px;
+  line-height: 1.5;
+}
