@@ -2,6 +2,7 @@
 const OWNER = "vastunestrealty";
 const REPO = "vastunestrealty";
 const BRANCH = "main";
+const LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwxBbWqX6KkvjD2GoH5ZttK-lxb3JWLf2qCNB-Xk4GOPcv5iF-wbu22PXA9GueDLUdjuw/exec";
 const PROJECTS_PATH = "content/projects";
 const WHATSAPP_NUMBER = "919699293097";
 const OFFICIAL_EMAIL = "official@vastunestrealty.com";
