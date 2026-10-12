@@ -156,7 +156,7 @@ function renderProjects() {
   </div>
   <div class="project-actions">
     <a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a>
-    ${project.slug === "yashada-evo-punawale" ? `<a href="/media/EVO%20Presenter_Digital_Vertical_A3.pdf" class="card-link" target="_blank" rel="noopener">Download Brochure PDF ↗</a>` : ""}
+    ${project.slug === "yashada-evo-punawale" ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
   </div>
 </div>
 </div></article>`;
