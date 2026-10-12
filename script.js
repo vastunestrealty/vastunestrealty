@@ -170,6 +170,84 @@ function renderProjects() {
     image.src = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";
   }, { once: true }));
 }
+function openBrochureLead(project) {
+  document.querySelector(".detail-modal")?.remove();
+
+  const brochureUrl = "/media/EVO%20Presenter_Digital_Vertical_A3.pdf";
+  const modal = document.createElement("div");
+  modal.className = "detail-modal";
+
+  modal.innerHTML = `
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">VASTUNEST REALTY</p>
+      <h2>Get Your Project Brochure</h2>
+      <p>Please share your details to access ${safe(project.title)} brochure.</p>
+
+      <form class="brochure-lead-form">
+        <label>Full Name
+          <input name="name" type="text" required placeholder="Full name">
+        </label>
+        <label>Mobile Number
+          <input name="mobile" type="tel" required pattern="[+]?[0-9 ]{10,15}" placeholder="Mobile number">
+        </label>
+        <label>Email Address
+          <input name="email" type="email" required placeholder="Email address">
+        </label>
+        <label>Preferred Configuration
+          <select name="configuration" required>
+            <option value="">Select configuration</option>
+            <option value="2 BHK">2 BHK</option>
+            <option value="3 BHK">3 BHK</option>
+            <option value="2 BHK / 3 BHK">Both 2 BHK & 3 BHK</option>
+          </select>
+        </label>
+        <button class="lead-submit" type="submit">Submit & Get Brochure ↗</button>
+        <p class="lead-status" aria-live="polite"></p>
+      </form>
+    </div>`;
+
+  document.body.appendChild(modal);
+
+  const form = modal.querySelector(".brochure-lead-form");
+  const status = modal.querySelector(".lead-status");
+  const submit = modal.querySelector(".lead-submit");
+
+  modal.querySelector(".modal-close").addEventListener("click", () => modal.remove());
+  modal.addEventListener("click", event => {
+    if (event.target === modal) modal.remove();
+  });
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const brochureTab = window.open("about:blank", "_blank");
+    const data = new URLSearchParams(new FormData(form));
+    data.set("project", project.title);
+
+    submit.disabled = true;
+    status.textContent = "Submitting your details…";
+
+    try {
+      await fetch(LEAD_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        body: data
+      });
+
+      if (brochureTab) {
+        brochureTab.location.href = brochureUrl;
+      } else {
+        window.location.href = brochureUrl;
+      }
+      modal.remove();
+    } catch (error) {
+      if (brochureTab) brochureTab.close();
+      status.textContent = "Could not submit. Please try again.";
+      submit.disabled = false;
+    }
+  });
+}
 function openDetails(project) {
   document.querySelector(".detail-modal")?.remove();
   const area = project.minCarpetArea && project.maxCarpetArea ? `${project.minCarpetArea}–${project.maxCarpetArea} sq ft` : project.minCarpetArea ? `${project.minCarpetArea}+ sq ft` : "On request";
