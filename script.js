@@ -166,6 +166,17 @@ function renderProjects() {
     const project = projects.find(item => item.slug === link.dataset.project);
     if (project) openDetails(project);
   }));
+  grid.querySelectorAll("[data-brochure]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+
+    const project = projects.find(
+      item => item.slug === link.dataset.brochure
+    );
+
+    if (project) openBrochureLead(project);
+  });
+});
   grid.querySelectorAll(".project-image img").forEach(image => image.addEventListener("error", () => {
     image.src = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";
   }, { once: true }));
