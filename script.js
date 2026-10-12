@@ -148,9 +148,17 @@ function renderProjects() {
       <div class="project-image"><img src="${safe(image)}" alt="${safe(project.title)}" loading="lazy"><span class="project-tag">${safe(project.propertyType)}</span></div>
       <div class="project-content"><div class="project-location">⌖ ${safe(project.location)}</div><h3>${safe(project.title)}</h3>
         <div class="project-meta"><span>${safe(configuration || "Residential homes")}</span>${project.developer ? `<span>${safe(project.developer)}</span>` : ""}</div>
-        <div class="project-bottom"><div><span class="price-label">Starting from</span><span class="project-price">${safe(price)}</span></div><a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a></div>
-      </div></article>`;
-  }).join("");
+     <div class="project-bottom">
+  <div>
+    <span class="price-label">Starting from</span>
+    <span class="project-price">${safe(price)}</span>
+  </div>
+  <div class="project-actions">
+    <a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a>
+    ${project.slug === "yashada-evo-punawale" ? `<a href="/vastunestrealty/media/EVO%20Presenter_Digital_Vertical_A3.pdf" class="card-link" target="_blank" rel="noopener">Download Brochure PDF ↗</a>` : ""}
+  </div>
+</div>
+</div></article>`;
   grid.querySelectorAll("[data-project]").forEach(link => link.addEventListener("click", event => {
     event.preventDefault();
     const project = projects.find(item => item.slug === link.dataset.project);
