@@ -155,11 +155,12 @@ function renderProjects() {
   </div>
   <div class="project-actions">
     <a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a>
-    ${project.slug === "yashada-evo-punawale" ? `<a href="/vastunestrealty/media/EVO%20Presenter_Digital_Vertical_A3.pdf" class="card-link" target="_blank" rel="noopener">Download Brochure PDF ↗</a>` : ""}
+    ${project.slug === "yashada-evo-punawale" ? `<a href="/media/EVO%20Presenter_Digital_Vertical_A3.pdf" class="card-link" target="_blank" rel="noopener">Download Brochure PDF ↗</a>` : ""}
   </div>
 </div>
 </div></article>`;
-  grid.querySelectorAll("[data-project]").forEach(link => link.addEventListener("click", event => {
+    }).join("");
+    grid.querySelectorAll("[data-project]").forEach(link => link.addEventListener("click", event => {
     event.preventDefault();
     const project = projects.find(item => item.slug === link.dataset.project);
     if (project) openDetails(project);
