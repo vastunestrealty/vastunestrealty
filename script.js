@@ -192,6 +192,15 @@ function openBrochureLead(project) {
     ? "/media/EVO%20Presenter_Digital_Vertical_A3.pdf"
     : "");
   const modal = document.createElement("div");
+  
+  const configurations = (Array.isArray(project.bhk)
+    ? project.bhk.join(", ")
+    : String(project.bhk || "")).match(/\d+\s*BHK/gi) || ["2 BHK", "3 BHK"];
+
+  const configurationOptions = [...new Set(configurations)]
+    .map(item => `<option value="${safe(item)}">${safe(item)}</option>`)
+    .join("");
+
   modal.className = "detail-modal";
 
   modal.innerHTML = `
