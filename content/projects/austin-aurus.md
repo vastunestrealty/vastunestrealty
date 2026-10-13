@@ -20,7 +20,7 @@ amenities:
   - • Party Lawn
   - • Senior Citizen & Kids Play Zone
   - • Home Automation
-description: |+
+description: |-
   ✨ AURUS BY AUSTIN ✨
 
   🏙 Wakad’s Most Exclusive Luxury Address
