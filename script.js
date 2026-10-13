@@ -157,7 +157,8 @@ function renderProjects() {
   <div class="project-actions">
     <a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a>
     
-    ${(field(project, "brochure", "brochurePdf", "brochureUrl") || project.slug === "yashada-evo-punawale") ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
+
+${field(project, "brochure", "brochurePdf", "brochureUrl") ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : project.slug === "yashada-evo-punawale" ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
 
   </div>
 </div>
