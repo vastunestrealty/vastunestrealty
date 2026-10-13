@@ -156,7 +156,9 @@ function renderProjects() {
   </div>
   <div class="project-actions">
     <a href="#project-details" class="card-link" data-project="${safe(project.slug)}">View details ↗</a>
-    ${project.slug === "yashada-evo-punawale" ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
+    
+    ${(field(project, "brochure", "brochurePdf", "brochureUrl") || project.slug === "yashada-evo-punawale") ? `<a href="#brochure-lead" class="card-link brochure-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
+
   </div>
 </div>
 </div></article>`;
@@ -208,9 +210,7 @@ function openBrochureLead(project) {
         <label>Preferred Configuration
           <select name="configuration" required>
             <option value="">Select configuration</option>
-            <option value="2 BHK">2 BHK</option>
-            <option value="3 BHK">3 BHK</option>
-            <option value="2 BHK / 3 BHK">Both 2 BHK & 3 BHK</option>
+           ${configurationOptions}
           </select>
         </label>
         <button class="lead-submit" type="submit">Submit & Get Brochure ↗</button>
@@ -265,12 +265,23 @@ function openDetails(project) {
   const amenities = Array.isArray(project.amenities) ? project.amenities.join(", ") : project.amenities;
   const message = encodeURIComponent(`Hello Vastunest Realty, please share details for ${project.title}.`);
   const modal = document.createElement("div");
+  
+  const configurations = (Array.isArray(project.bhk)
+    ? project.bhk.join(", ")
+    : String(project.bhk || "")).match(/\d+\s*BHK/gi) || ["2 BHK", "3 BHK"];
+
+  const configurationOptions = [...new Set(configurations)]
+    .map(item => `<option value="${safe(item)}">${safe(item)}</option>`)
+    .join("");
+
   modal.className = "detail-modal";
   modal.innerHTML = `<div class="modal-card" role="dialog" aria-modal="true" aria-label="${safe(project.title)} details">
     <button class="modal-close" type="button" aria-label="Close details">×</button><p class="eyebrow">VASTUNEST PROPERTY DETAILS</p><h2>${safe(project.title)}</h2>
     <p>${safe(project.description || "Contact our property advisor for detailed project information and current availability.")}</p>
     <div class="modal-details"><div><small>Location</small><strong>${safe(project.location)}</strong></div><div><small>Configuration</small><strong>${safe(Array.isArray(project.bhk) ? project.bhk.join(", ") : project.bhk || "On request")}</strong></div><div><small>Starting price</small><strong>${safe(money(project.startingPrice))}</strong></div><div><small>Carpet area</small><strong>${safe(area)}</strong></div><div><small>Developer</small><strong>${safe(project.developer || "Details on request")}</strong></div><div><small>Possession / Status</small><strong>${safe([project.possession, project.status].filter(Boolean).join(" · ") || "Contact advisor")}</strong></div>${amenities ? `<div class="modal-wide"><small>Amenities</small><strong>${safe(amenities)}</strong></div>` : ""}</div>
-<div class="modal-actions"><a href="https://wa.me/${WHATSAPP_NUMBER}?text=${message}" target="_blank" rel="noopener">Enquire on WhatsApp ↗</a><a href="mailto:${OFFICIAL_EMAIL}?subject=${encodeURIComponent("Property enquiry: " + project.title)}">Email an advisor ↗</a>${project.slug === "yashada-evo-punawale" ? `<a href="#brochure-lead" class="card-link brochure-modal-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}</div></div>`;
+<div class="modal-actions"><a href="https://wa.me/${WHATSAPP_NUMBER}?text=${message}" target="_blank" rel="noopener">Enquire on WhatsApp ↗</a><a href="mailto:${OFFICIAL_EMAIL}?subject=${encodeURIComponent("Property enquiry: " + project.title)}">Email an advisor ↗</a>
+${(field(project, "brochure", "brochurePdf", "brochureUrl") || project.slug === "yashada-evo-punawale") ? `<a href="#brochure-lead" class="card-link brochure-modal-link" data-brochure="${safe(project.slug)}">Download Brochure PDF ↗</a>` : ""}
+</div></div>`;
   document.body.appendChild(modal);
   modal.querySelector(".brochure-modal-link")?.addEventListener("click", event => {
   event.preventDefault();
