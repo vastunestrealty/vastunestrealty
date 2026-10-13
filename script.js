@@ -186,7 +186,10 @@ function renderProjects() {
 function openBrochureLead(project) {
   document.querySelector(".detail-modal")?.remove();
 
-  const brochureUrl = "/media/EVO%20Presenter_Digital_Vertical_A3.pdf";
+  const brochureUrl = field(project, "brochure", "brochurePdf", "brochureUrl") ||
+  (project.slug === "yashada-evo-punawale"
+    ? "/media/EVO%20Presenter_Digital_Vertical_A3.pdf"
+    : "");
   const modal = document.createElement("div");
   modal.className = "detail-modal";
 
