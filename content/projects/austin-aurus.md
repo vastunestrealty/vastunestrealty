@@ -12,6 +12,7 @@ possession: Dec'30
 status: Under Construction
 featured: true
 coverImage: /media/WhatsApp Image 2026-10-13 at 10.00.10 PM.jpeg
+brochure: /media/Austin Aurus Brochure.pdf
 gallery:
   - /media/Austin Aurus A3 Sales Presenter_18 Aug (2)_page-0021.jpg
 amenities:
