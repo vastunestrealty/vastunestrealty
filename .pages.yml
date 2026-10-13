@@ -88,6 +88,14 @@ content:
       - name: coverImage
         label: Cover Image
         type: image
+        
+      - name: brochure
+        label: Brochure PDF
+        type: file
+        options:
+          extensions:
+            - pdf
+
 
       - name: gallery
         label: Project Gallery
