@@ -2,7 +2,7 @@
 title: Austin Aurus
 slug: austin-aurus
 developer: Austin Realty
-location: Wakad
+location: Wakad, Pune
 propertyType: Apartment
 bhk: 3 BHK, 4 BHK
 minCarpetArea: 1235
