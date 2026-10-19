@@ -327,6 +327,22 @@ function startWebsite() {
   const year = $("#year");
   if (year) year.textContent = new Date().getFullYear();
   loadProjects();
+  
+  const developerTrack = document.querySelector(".developer-track");
+  const developerGroup = developerTrack?.querySelector(".developer-group");
+
+  if (developerTrack && developerGroup && !developerTrack.dataset.cloned) {
+    const duplicate = developerGroup.cloneNode(true);
+    duplicate.setAttribute("aria-hidden", "true");
+
+    duplicate.querySelectorAll("img").forEach(img => {
+      img.alt = "";
+    });
+
+    developerTrack.appendChild(duplicate);
+    developerTrack.dataset.cloned = "true";
+  }
+
 }
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", startWebsite);
 else startWebsite();
