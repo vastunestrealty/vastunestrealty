@@ -171,3 +171,22 @@
     animation: none;
   }
 }
+
+.brand-logo {
+  display: block;
+  width: 180px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    width: 145px;
+    height: 52px;
+  }
+}
