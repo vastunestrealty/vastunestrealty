@@ -11,11 +11,10 @@ startingPrice: 10000000
 possession: Dec'30
 status: Under Construction
 featured: true
-brochure: /media/EVO%20Presenter_Digital_Vertical_A3.pdf
 coverImage: /media/EVO Presenter_Digital_Vertical_A3_5.jpg
+brochure: /media/EVO Presenter_Digital_Vertical_A3.pdf
 gallery:
   - /media/EVO Presenter_Digital_Vertical_A3_12.jpg
-  - /media/EVO Presenter_Digital_Vertical_A3_6.jpg
   - /media/EVO Presenter_Digital_Vertical_A3_21.jpg
   - /media/EVO Presenter_Digital_Vertical_A3_22.jpg
   - /media/EVO Presenter_Digital_Vertical_A3_23.jpg
