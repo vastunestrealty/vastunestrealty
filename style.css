@@ -190,3 +190,64 @@
     height: 52px;
   }
 }
+/* Premium horizontal Vastunest Realty logo */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-logo-symbol {
+  display: block;
+  width: 58px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.1;
+}
+
+.brand-name {
+  color: #103b2e;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.brand-subtitle {
+  color: #b38a3e;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-logo-symbol {
+    width: 42px;
+    height: 40px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+}
