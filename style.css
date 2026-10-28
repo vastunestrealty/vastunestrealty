@@ -81,10 +81,22 @@
 .developer-track {
   display: flex;
   width: max-content;
-  animation: developer-scroll 65s linear infinite;
+  animation: developer-scroll 35s linear infinite !important;
   will-change: transform;
 }
 
+.developer-slider:hover .developer-track {
+  animation-play-state: running;
+}
+
+@keyframes developer-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 .developer-group {
   display: flex;
   flex: 0 0 auto;
