@@ -12,10 +12,12 @@ possession: Dec'30
 status: Under Construction
 featured: true
 coverImage: /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
+gallery:
+  - /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
 amenities:
   - " 50+ Modern Amenities"
   - 4.5 Acres | 5 Towers | B+G+23 Floors
-description: >+
+description: >-
   🏙️ *Elevate Your Lifestyle at Pune’s Newest Landmark!*
 
 
