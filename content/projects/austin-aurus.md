@@ -16,6 +16,7 @@ brochure: /media/Austin Aurus Brochure.pdf
 gallery:
   - /media/Austin Aurus A3 Sales Presenter_18 Aug (2)_page-0021.jpg
   - /media/WhatsApp Image 2026-10-28 at 11.05.59 PM.jpeg
+  - /media/WhatsApp Image 2026-10-28 at 11.08.44 PM.jpeg
 amenities:
   - • Swimming & Kids Pool
   - " • Sports Area & Multipurpose Court"
