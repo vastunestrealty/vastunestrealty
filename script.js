@@ -142,11 +142,28 @@ function renderProjects() {
   if (empty) empty.hidden = filtered.length > 0;
   if (!filtered.length) { grid.innerHTML = ""; return; }
   grid.innerHTML = filtered.map(project => {
-    const image = project.coverImage || "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";
+    
+const fallbackImage = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";
+const galleryImages = [
+  project.coverImage,
+  ...(Array.isArray(project.gallery) ? project.gallery : [])
+].filter((image, index, images) => image && images.indexOf(image) === index);
+const image = galleryImages[0] || fallbackImage;
+
     const configuration = Array.isArray(project.bhk) ? project.bhk.join(", ") : project.bhk;
     const price = money(project.startingPrice);
     return `<article class="project-card">
-      <div class="project-image"><img src="${safe(image)}" alt="${safe(project.title)}" loading="lazy"><span class="project-tag">${safe(project.propertyType)}</span></div>
+      
+<div class="project-image project-card-gallery" data-gallery-index="0" data-project-gallery="${safe(project.slug)}">
+  <img class="project-gallery-image" src="${safe(image)}" alt="${safe(project.title)}" loading="lazy">
+  <span class="project-tag">${safe(project.propertyType)}</span>
+  ${galleryImages.length > 1 ? `
+    <button type="button" class="gallery-arrow gallery-prev" data-gallery-prev aria-label="Previous image">‹</button>
+    <button type="button" class="gallery-arrow gallery-next" data-gallery-next aria-label="Next image">›</button>
+    <span class="gallery-counter">1 / ${galleryImages.length}</span>
+  ` : ""}
+</div>
+
       <div class="project-content"><div class="project-location">⌖ ${safe(project.location)}</div><h3>${safe(project.title)}</h3>
         <div class="project-meta"><span>${safe(configuration || "Residential homes")}</span>${project.developer ? `<span>${safe(project.developer)}</span>` : ""}</div>
      <div class="project-bottom">
@@ -182,7 +199,35 @@ ${field(project, "brochure", "brochurePdf", "brochureUrl") ? `<a href="#brochure
 });
   grid.querySelectorAll(".project-image img").forEach(image => image.addEventListener("error", () => {
     image.src = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80";
-  }, { once: true }));
+  }, { once: true }));  grid.querySelectorAll(".project-card-gallery [data-gallery-prev], .project-card-gallery [data-gallery-next]").forEach(button => {
+    button.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const gallery = button.closest(".project-card-gallery");
+      const slug = gallery.dataset.projectGallery;
+      const project = projects.find(item => item.slug === slug);
+      if (!project) return;
+
+      const images = [
+        project.coverImage,
+        ...(Array.isArray(project.gallery) ? project.gallery : [])
+      ].filter((image, index, all) => image && all.indexOf(image) === index);
+
+      if (images.length < 2) return;
+
+      let index = Number(gallery.dataset.galleryIndex || 0);
+      index = button.hasAttribute("data-gallery-next")
+        ? (index + 1) % images.length
+        : (index - 1 + images.length) % images.length;
+
+      gallery.dataset.galleryIndex = String(index);
+      gallery.querySelector(".project-gallery-image").src = images[index];
+
+      const counter = gallery.querySelector(".gallery-counter");
+      if (counter) counter.textContent = `${index + 1} / ${images.length}`;
+    });
+  });
 }
 function openBrochureLead(project) {
   document.querySelector(".detail-modal")?.remove();
