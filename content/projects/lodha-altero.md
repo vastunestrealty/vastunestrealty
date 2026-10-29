@@ -15,6 +15,12 @@ coverImage: /media/images.jpg
 brochure: /media/LodhaAltero_Brochure_compressed.pdf
 gallery:
   - /media/WhatsApp Image 2026-10-29 at 8.32.01 AM.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.32.02 AM-1.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.32.01 AM(2)-1.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.32.01 AM(1).jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.32.00 AM(1).jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.32.00 AM.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.31.59 AM.jpeg
 amenities:
   - Rooftop & Sports Amenities
   - Grand Rooftop Infinity Pool
