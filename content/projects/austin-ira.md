@@ -12,6 +12,7 @@ possession: Dec'30
 status: Under Construction
 featured: true
 coverImage: /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
+brochure: /media/Austin Ira Brochure_compressed.pdf
 gallery:
   - /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
 amenities:
