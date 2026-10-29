@@ -12,6 +12,9 @@ possession: Dec 28
 status: Under Construction
 featured: true
 coverImage: /media/images.jpg
+brochure: /media/LodhaAltero_Brochure_compressed.pdf
+gallery:
+  - /media/WhatsApp Image 2026-10-29 at 8.32.01 AM.jpeg
 amenities:
   - Rooftop & Sports Amenities
   - Grand Rooftop Infinity Pool
