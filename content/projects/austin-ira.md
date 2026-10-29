@@ -15,6 +15,9 @@ coverImage: /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
 brochure: /media/Austin Ira Brochure_compressed.pdf
 gallery:
   - /media/WhatsApp Image 2026-10-14 at 3.47.34 PM.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.20.50 AM.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.20.20 AM.jpeg
+  - /media/WhatsApp Image 2026-10-29 at 8.19.17 AM.jpeg
 amenities:
   - " 50+ Modern Amenities"
   - 4.5 Acres | 5 Towers | B+G+23 Floors
